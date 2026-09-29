@@ -34,7 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    namespace 'com.codepath.nationalparks'
+    namespace 'com.codepath.movies'
 }
 
 dependencies {

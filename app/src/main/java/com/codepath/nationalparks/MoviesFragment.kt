@@ -1,4 +1,5 @@
-package com.codepath.nationalparks
+package com.codepath.movies
+
 
 import android.os.Bundle
 import android.util.Log
@@ -22,14 +23,14 @@ import org.json.JSONArray
 // --------------------------------//
 // CHANGE THIS TO BE YOUR API KEY  //
 // --------------------------------//
-private const val API_KEY = "xUsZwXXaMHdGXJBLWnsgSAvmB4WzsqdHWyi9KsSd"
+private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
 
 /*
  * The class for the only fragment in the app, which contains the progress bar,
  * recyclerView, and performs the network calls to the National Parks API.
 
  */
-class NationalParksFragment : Fragment(), OnListFragmentInteractionListener {
+class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
         /*
      * Constructing the view
      */
@@ -37,7 +38,7 @@ class NationalParksFragment : Fragment(), OnListFragmentInteractionListener {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            val view = inflater.inflate(R.layout.fragment_national_parks_list, container, false)
+            val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
             val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
             val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
             val context = view.context
@@ -62,7 +63,7 @@ class NationalParksFragment : Fragment(), OnListFragmentInteractionListener {
 
         // Using the client, perform the HTTP request
         client[
-            "https://developer.nps.gov/api/v1/parks",
+            "https://api.themoviedb.org/3/movie/now_playing",
             params,
             object : JsonHttpResponseHandler()
 
@@ -82,22 +83,22 @@ class NationalParksFragment : Fragment(), OnListFragmentInteractionListener {
                 //TODO - Parse JSON into Models
 
                 // Filter out the "data" JSON array and turn into a String
-                val dataJSON = json.jsonObject.get("data") as JSONArray
-                val parksRawJSON = dataJSON.toString()
+                val dataJSON = json.jsonObject.get("results") as JSONArray
+                val moviesRawJSON = dataJSON.toString()
 
                 // Create a Gson instance to help parse the raw JSON
                 val gson = Gson()
 
                 // Tell Gson what type we’re expecting (a list of NationalPark objects)
-                val arrayParkType = object : TypeToken<List<NationalPark>>() {}.type
+                val arrayMovieType = object : TypeToken<List<Movie>>() {}.type
 
                 // Convert the raw JSON string into a list of actual NationalPark data models
-                val models: List<NationalPark> = gson.fromJson(parksRawJSON, arrayParkType)
+                val models: List<Movie> = gson.fromJson(moviesRawJSON, arrayMovieType)
 
-                recyclerView.adapter = NationalParksRecyclerViewAdapter(models, this@NationalParksFragment)
+                recyclerView.adapter = MoviesRecyclerViewAdapter(models, this@MoviesFragment)
 
                 // Look for this in Logcat:
-                Log.d("NationalParksFragment", "response successful")
+                Log.d("MoviesFragment", "response successful")
             }
 
             /*
@@ -115,7 +116,7 @@ class NationalParksFragment : Fragment(), OnListFragmentInteractionListener {
 
                 // If the error is not null, log it!
                 t?.message?.let {
-                    Log.e("NationalParksFragment", errorResponse)
+                    Log.e("MoviesFragment", errorResponse)
                 }
             }
         }]
@@ -126,8 +127,8 @@ class NationalParksFragment : Fragment(), OnListFragmentInteractionListener {
     /*
      * What happens when a particular park is clicked.
      */
-    override fun onItemClick(item: NationalPark) {
-        Toast.makeText(context, "Park Name: " + item.name, Toast.LENGTH_LONG).show()
+    override fun onItemClick(item: Movie) {
+        Toast.makeText(context, "Movie Name: " + item.title, Toast.LENGTH_LONG).show()
     }
 
 }

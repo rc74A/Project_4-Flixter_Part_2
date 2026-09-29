@@ -1,7 +1,8 @@
-package com.codepath.nationalparks
+package com.codepath.movies
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.codepath.movies.MoviesFragment
 
 
 /**
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val supportFragmentManager = supportFragmentManager
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.content, NationalParksFragment(), null).commit()
+        fragmentTransaction.replace(R.id.content, MoviesFragment(), null).commit()
 
     }
 }

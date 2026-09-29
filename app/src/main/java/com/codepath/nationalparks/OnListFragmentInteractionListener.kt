@@ -1,4 +1,4 @@
-package com.codepath.nationalparks
+package com.codepath.movies
 
 /**
  * This interface is used by the [NationalParksRecyclerViewAdapter] to ensure
@@ -7,5 +7,5 @@ package com.codepath.nationalparks
  * In this app, it's implemented by [NationalParksFragment]
  */
 interface OnListFragmentInteractionListener {
-    fun onItemClick(item: NationalPark)
+    fun onItemClick(item: Movie)
 }
