@@ -32,7 +32,7 @@ Here's a walkthrough of implemented user stories:
 
 <img src='Project_3_Flixter_1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-(Note: In case the gif isn't shown, both the gif and the webm can be found in this repository: "Project_2_Video(1).webm" and "Project_2_Video(2).webm" along with respective gif formats.)
+(Note: In case the gif isn't shown, both the gif and the webm can be found in this repository: "Project_3_Flixter_1.gif" and "Project_3_Flixter_1.webm").
 Link to the videos on imgur: https://i.imgur.com/R0H9myH.gif
 
 Video created with ...  
