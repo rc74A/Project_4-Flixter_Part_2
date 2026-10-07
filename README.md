@@ -30,10 +30,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='Project_4_Video.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Video created with ...  
 Built-in screen recorder in Android Studio and [ScreenToGif](https://www.screentogif.com/) for Windows
+
+(Note: In case the gif isn't shown, both the gif and the webm can be found in this repository: "Project_4_Video.gif" and "Project_4_Video.webm").
+Link to the videos on imgur: https://i.imgur.com/GgA8STp.gif
 
 ## Notes
 
