@@ -7,5 +7,5 @@ package com.codepath.movies
  * In this app, it's implemented by [NationalParksFragment]
  */
 interface OnListFragmentInteractionListener {
-    fun onItemClick(item: Movie)
+    fun onItemClick(item: Actor)
 }

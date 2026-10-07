@@ -1,6 +1,7 @@
 package com.codepath.movies
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,7 +31,7 @@ private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
  * recyclerView, and performs the network calls to the National Parks API.
 
  */
-class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
+class ActorsFragment : Fragment(), OnListFragmentInteractionListener {
         /*
      * Constructing the view
      */
@@ -38,7 +39,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
         ): View? {
-            val view = inflater.inflate(R.layout.fragment_movies_list, container, false)
+            val view = inflater.inflate(R.layout.fragment_actors_list, container, false)
             val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
             val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
             val context = view.context
@@ -63,7 +64,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
 
         // Using the client, perform the HTTP request
         client[
-            "https://api.themoviedb.org/3/movie/now_playing",
+            "https://api.themoviedb.org/3/person/popular",
             params,
             object : JsonHttpResponseHandler()
 
@@ -84,21 +85,21 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
 
                 // Filter out the "data" JSON array and turn into a String
                 val dataJSON = json.jsonObject.get("results") as JSONArray
-                val moviesRawJSON = dataJSON.toString()
+                val actorsRawJSON = dataJSON.toString()
 
                 // Create a Gson instance to help parse the raw JSON
                 val gson = Gson()
 
                 // Tell Gson what type we’re expecting (a list of NationalPark objects)
-                val arrayMovieType = object : TypeToken<List<Movie>>() {}.type
+                val arrayActorType = object : TypeToken<List<Actor>>() {}.type
 
                 // Convert the raw JSON string into a list of actual NationalPark data models
-                val models: List<Movie> = gson.fromJson(moviesRawJSON, arrayMovieType)
+                val models: List<Actor> = gson.fromJson(actorsRawJSON, arrayActorType)
 
-                recyclerView.adapter = MoviesRecyclerViewAdapter(models, this@MoviesFragment)
+                recyclerView.adapter = ActorsRecyclerViewAdapter(models, this@ActorsFragment)
 
                 // Look for this in Logcat:
-                Log.d("MoviesFragment", "response successful")
+                Log.d("ActorsFragment", "response successful")
             }
 
             /*
@@ -116,7 +117,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
 
                 // If the error is not null, log it!
                 t?.message?.let {
-                    Log.e("MoviesFragment", errorResponse)
+                    Log.e("ActorsFragment", errorResponse)
                 }
             }
         }]
@@ -127,8 +128,12 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
     /*
      * What happens when a particular park is clicked.
      */
-    override fun onItemClick(item: Movie) {
-        Toast.makeText(context, "Movie Name: " + item.title, Toast.LENGTH_LONG).show()
+    override fun onItemClick(item: Actor) {
+        val intent = Intent(requireContext(), ActorDetailActivity::class.java)
+
+        intent.putExtra("actor_id", item.id)
+
+        startActivity(intent)
     }
 
 }

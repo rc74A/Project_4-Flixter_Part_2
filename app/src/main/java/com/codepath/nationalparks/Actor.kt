@@ -8,18 +8,18 @@ import com.google.gson.annotations.SerializedName
  * SerializedName tags MUST match the JSON response for the
  * object to correctly parse with the gson library.
  */
-class Movie {
+class Actor {
     @JvmField
-    @SerializedName("title")
-    var title: String? = null
-
-    @JvmField
-    @SerializedName("overview")
-    var description: String? = null
-
-
+    @SerializedName("id")
+    var id: Int = 0
 
     @JvmField
-    @SerializedName("poster_path")
-    var posterPath: String? = null
+    @SerializedName("name")
+    var name: String? = null
+
+
+
+    @JvmField
+    @SerializedName("profile_path")
+    var profilePath: String? = null
 }

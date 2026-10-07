@@ -13,60 +13,59 @@ import com.codepath.movies.R.id
  * [RecyclerView.Adapter] that can display a [NationalPark] and makes a call to the
  * specified [OnListFragmentInteractionListener].
  */
-class MoviesRecyclerViewAdapter(
-    private val movies: List<Movie>,
+class ActorsRecyclerViewAdapter(
+    private val actors: List<Actor>,
     private val mListener: OnListFragmentInteractionListener?
-) : RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder>() {
+) : RecyclerView.Adapter<ActorsRecyclerViewAdapter.ActorViewHolder>() {
 
     // Inflate the item layout from XML
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_movie, parent, false)
-        return MovieViewHolder(view)
+            .inflate(R.layout.fragment_actor, parent, false)
+        return ActorViewHolder(view)
     }
 
     // ViewHolder class holds references to all UI elements inside the list item layout
-    inner class MovieViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        var mItem: Movie? = null
+    inner class ActorViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
+        var mItem: Actor? = null
 
         // TODO: Step 4a - Add references for remaining views from XML
-        val mMovieName: TextView = mView.findViewById(id.movie_title) as TextView
+        val mActorName: TextView = mView.findViewById(id.actor_name) as TextView
 
-        val mMovieDescription: TextView = mView.findViewById(id.movie_description) as TextView
-        val mMovieImage: ImageView = mView.findViewById(R.id.movie_image)
+        val mActorImage: ImageView = mView.findViewById(R.id.actor_image)
 
         override fun toString(): String {
-            return mMovieName.toString() + " '" + mMovieDescription.text + "'"
+            return mActorName.toString()
         }
     }
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movies[position]
+    override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
+        val actor = actors[position]
 
         // TODO: Step 4b - Bind the park data to the views
-        holder.mItem = movie
-        holder.mMovieName.text = movie.title
+        holder.mItem = actor
+        holder.mActorName.text = actor.name
 
-        holder.mMovieDescription.text = movie.description
+
 
         // TODO: Step 4c - Use Glide to load the first image
-        val imageUrl = "https://image.tmdb.org/t/p/w500${movie.posterPath}"
+        val imageUrl = "https://image.tmdb.org/t/p/w500${actor.profilePath}"
         Glide.with(holder.mView)
             .load(imageUrl)
             .centerInside()
-            .into(holder.mMovieImage)
+            .into(holder.mActorImage)
 
 
         // Sets up click listener for this park item
         holder.mView.setOnClickListener {
-            holder.mItem?.let { movie ->
-                mListener?.onItemClick(movie)
+            holder.mItem?.let { actor ->
+                mListener?.onItemClick(actor)
             }
         }
     }
 
     // Tells the RecyclerView how many items to display
     override fun getItemCount(): Int {
-        return movies.size
+        return actors.size
     }
 }
