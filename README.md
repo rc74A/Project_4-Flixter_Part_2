@@ -1,26 +1,26 @@
-# Android Project 3 - *Project_3_Flixter_1*
+# Android Project 4 - *Project_4-Flixter_Part_2*
 
 Submitted by: **Ricardo Cotzomi**
 
-**Project_3_Flixter_1** is a movie browsing app that allows users to browse movies currently playing in theaters.
+**Project_4-Flixter_Part_2** is a movie browsing app that allows users to browse movie actors 
 
-Time spent: **5** hours spent in total
+Time spent: **7** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **Make a request to [The Movie Database API's `now_playing`](https://developers.themoviedb.org/3/movies/get-now-playing) endpoint to get a list of current movies**
-- [x] **Parse through JSON data and implement a RecyclerView to display all movies**
-- [x] **Use Glide to load and display movie poster images**
+- [x] **Choose any endpoint on The MovieDB API except `now_playing`**
+  - Chosen Endpoint: `/person/popular`
+- [x] **Make a request to your chosen endpoint and implement a RecyclerView to display all entries**
+- [x] **Use Glide to load and display at least one image per entry**
+- [x] **Click on an entry to view specific details about that entry using Intents**
 
 The following **optional** features are implemented:
 
-- [ ] Improve and customize the user interface through styling and coloring
-- [ ] Implement orientation responsivity
-  - App should neatly arrange data in both landscape and portrait mode
-- [ ] Implement Glide to display placeholder graphics during loading
-  - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
+- [ ] **Add another API call and RecyclerView that lets the user interact with different data.** 
+- [ ] **Add rounded corners to the images using the Glide transformations**
+- [ ] **Implement a shared element transition when user clicks into the details of a movie**
 
 The following **additional** features are implemented:
 
@@ -30,10 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='Project_3_Flixter_1.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-(Note: In case the gif isn't shown, both the gif and the webm can be found in this repository: "Project_3_Flixter_1.gif" and "Project_3_Flixter_1.webm").
-Link to the videos on imgur: https://i.imgur.com/R0H9myH.gif
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 Video created with ...  
 Built-in screen recorder in Android Studio and [ScreenToGif](https://www.screentogif.com/) for Windows
@@ -41,8 +38,7 @@ Built-in screen recorder in Android Studio and [ScreenToGif](https://www.screent
 ## Notes
 
 Describe any challenges encountered while building the app.
-
-The biggest challenge was branching out from the lab 3 and figuring out what should be changed and what should stay the same.
+The challenge was figuring out what should change and what should stay the same when building upon the previous project.
 
 ## License
 
